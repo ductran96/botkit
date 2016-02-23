@@ -228,15 +228,15 @@ controller.hears('prime (.*)',['direct_message', 'direct_mention', 'mention'],fu
 
     if (MathHelper.isPrime(parameter)) {
         var primes = new Array();
-        var number = parameter + 1;
+        var number = parameter - 1;
 
-        while (primes.length < 10) {
+        while (primes.length < 10 && number != 0) {
 
             if (MathHelper.isPrime(number)) {
                 primes.push(number);
             }
 
-            number++;
+            number--;
         }
 
         var reply = "";
