@@ -184,9 +184,16 @@ controller.hears(['fibonacci ([0-9]+)'], 'direct_message,direct_mention,mention'
         bot.reply(message, 'That is not a Fibonacci number!');
     }
     else {
-        bot.reply(message, fibonacci.slice(fibonacci.length-10,fibonacci.length).join(', '));
+        /*for (var i = 0; i < primes.length; i++) {
+            reply += primes[i] + " ";
+        }*/
+        for (var i = 0; i < 5; i++){
+          fibonacci.push(fibonacci[fibonacci.length-2] + fibonacci[fibonacci.length-1])
+        }
+        bot.reply(message, fibonacci.slice(fibonacci.length-5,fibonacci.length).join(', '));
     }
 });
+
 
 function calculateFibonacciUpto(goal) {
     var fibonacci = [1, 1];
