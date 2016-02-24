@@ -1128,3 +1128,6 @@ bot.identifyBot(function(err,identity) {
 
 # Chat with us at dev4slack.slack.com
 You can get an invite here: http://dev4slack.xoxco.com/.
+
+#Status image
+https://travis-ci.org/ductran96/botkit.svg?branch=master
