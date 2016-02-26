@@ -84,7 +84,7 @@ var bot = controller.spawn({
 }).startRTM();
 
 
-controller.hears(['hello','hi','yo'],'direct_message,direct_mention,mention',function(bot, message) {
+controller.hears(['yo'],'direct_message,direct_mention,mention',function(bot, message) {
 
     bot.api.reactions.add({
         timestamp: message.ts,
@@ -270,4 +270,27 @@ controller.hears('game (.*)',['direct_message', 'direct_mention', 'mention'],fun
         bot.reply(message, parse[Object.keys(parse)[0]][Object.keys(parse[Object.keys(parse)[0]])[0]]['time']);
       }
     })
+});
+
+
+controller.hears('google this (.*)',['direct_message', 'direct_mention', 'mention'],function(bot,message) {
+      var keyWord = message.match[1];
+      var google = require('google');
+
+      google.resultsPerPage = 4;
+      //var nextCounter = 0;
+
+      google(keyWord, function (err, next, links){
+        if (err) console.error(err)
+
+        for (var i = 0; i < links.length; ++i) {
+          bot.reply(message, links[i].title + ' - ' + links[i].link); 
+          //bot.reply(message, links[i].description + "\n");
+        }
+
+        /*if (nextCounter < 2) {
+          nextCounter += 1
+          if (next) next()
+        }*/
+      })
 });
