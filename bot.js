@@ -273,12 +273,12 @@ controller.hears('game (.*)',['direct_message', 'direct_mention', 'mention'],fun
 });
 
 
-controller.hears('google this (.*)',['direct_message', 'direct_mention', 'mention'],function(bot,message) {
+controller.hears(['google this (.*)','google (.*)','haku (.*)'],['direct_message', 'direct_mention', 'mention'],function(bot,message) {
       var keyWord = message.match[1];
       var google = require('google');
 
       google.resultsPerPage = 4;
-      //var nextCounter = 0;
+      var nextCounter = 0;
 
       google(keyWord, function (err, next, links){
         if (err) console.error(err)
@@ -288,9 +288,9 @@ controller.hears('google this (.*)',['direct_message', 'direct_mention', 'mentio
           //bot.reply(message, links[i].description + "\n");
         }
 
-        /*if (nextCounter < 2) {
+        if (nextCounter < 2) {
           nextCounter += 1
           if (next) next()
-        }*/
+        }
       })
 });
